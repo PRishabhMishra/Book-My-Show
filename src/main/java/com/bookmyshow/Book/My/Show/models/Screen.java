@@ -21,6 +21,6 @@ public class Screen {
     Hall hall;
     int screenCapacity;
     boolean status;//booked or empty
-    String type;//1D or 2D
+    String type;//  1D or 2D
 
 }

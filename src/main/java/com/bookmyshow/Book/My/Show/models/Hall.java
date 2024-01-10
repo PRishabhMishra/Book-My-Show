@@ -27,6 +27,8 @@ public class Hall {
     String email;
     long contactNumber;
     String password;
+    @ManyToOne
+    ApplicationUser owner;
     @OneToMany(mappedBy = "hall")
     List<Screen> screens;
     @OneToMany(mappedBy = "hall")
