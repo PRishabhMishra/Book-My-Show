@@ -1,6 +1,8 @@
 package com.bookmyshow.Book.My.Show.service;
 
+import com.bookmyshow.Book.My.Show.models.Movie;
 import com.bookmyshow.Book.My.Show.models.Show;
+import com.bookmyshow.Book.My.Show.models.Ticket;
 import com.bookmyshow.Book.My.Show.repository.HallRepository;
 import com.bookmyshow.Book.My.Show.repository.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +33,19 @@ public class ShowService {
         return showRepository.getShowsByHallIdAndMovieId(hallId,movieId);
 
     }
-}
+
+    public Show getShowByShowId(UUID showId){
+        return showRepository.findById(showId).orElse(null);
+    }
+
+    /* decrease Available Ticket Count for a particular show
+
+     */
+    public void updateAvailableTicketCount(Show show){
+         int updatedAvailableTicket = show.getAvailableTickets()-1;
+         UUID showID = show.getId();
+         showRepository.updateAvailableTicketCount(showID,updatedAvailableTicket);
+    }
+
+    }
+

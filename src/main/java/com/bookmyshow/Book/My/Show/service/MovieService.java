@@ -2,6 +2,7 @@ package com.bookmyshow.Book.My.Show.service;
 
 import com.bookmyshow.Book.My.Show.models.ApplicationUser;
 import com.bookmyshow.Book.My.Show.models.Movie;
+import com.bookmyshow.Book.My.Show.models.Ticket;
 import com.bookmyshow.Book.My.Show.models.dto.request.MovieOwnerSignUpDTO;
 import com.bookmyshow.Book.My.Show.repository.ApplicationUserRepository;
 import com.bookmyshow.Book.My.Show.repository.MovieRepository;
@@ -39,5 +40,17 @@ public class MovieService {
 
     public Movie getMovieBYId(UUID id){
         return movieRepository.findById(id).orElse(null);
+    }
+
+    public int getTotalTicketCount(Movie movie){
+        return movie.getTickets().size();
+    }
+
+    public int getBoxOfficeCollection(Movie movie) {
+        int totalIncome = 0;
+        for (Ticket ticket : movie.getTickets()) {
+            totalIncome += ticket.getShow().getTicketPrice();
+        }
+        return totalIncome;
     }
 }
