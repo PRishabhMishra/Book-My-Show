@@ -1,5 +1,6 @@
 package com.bookmyshow.Book.My.Show.models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,10 +17,13 @@ import java.util.UUID;
 @Getter
 @Setter
 
+@Schema(description = "This represents hall model")
+
 public class Hall {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY,example = "123")
     UUID id;
     String name;
     String address;

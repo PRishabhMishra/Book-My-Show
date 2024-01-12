@@ -14,7 +14,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
 @Service
-@Getter
 public class BarCodeGenerationService {
     static final String qrLocation = "./src/main/resources/static/QRCode.png";
 
